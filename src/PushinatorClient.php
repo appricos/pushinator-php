@@ -39,15 +39,15 @@ class PushinatorClient
     public function sendNotification(string $channelId, string $notification): void
     {
         try {
-            $response = $this->client->request('POST', self::$baseUrl . "/api/v1/send_notification", [
+            $response = $this->client->request('POST', self::$baseUrl . "/api/v2/notifications/send", [
                 'headers' => [
                     'Authorization' => "Bearer {$this->apiToken}",
                     'Content-Type' => 'application/json',
                     'User-Agent' => self::$userAgent,
                 ],
                 'json' => [
-                    'channel' => $channelId,
-                    'notification' => $notification,
+                    'channel_id' => $channelId,
+                    'content' => $notification,
                 ],
             ]);
 

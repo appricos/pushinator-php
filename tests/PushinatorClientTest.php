@@ -36,12 +36,12 @@ class PushinatorClientTest extends TestCase
         $request = $container[0]['request'];
 
         $this->assertEquals('POST', $request->getMethod());
-        $this->assertEquals('https://api.pushinator.com/api/v1/send_notification', $request->getUri());
+        $this->assertEquals('https://api.pushinator.com/api/v2/notifications/send', $request->getUri());
         $this->assertEquals('Bearer test-token', $request->getHeaderLine('Authorization'));
         $this->assertEquals('application/json', $request->getHeaderLine('Content-Type'));
         $this->assertEquals('pushinator-php/1.0', $request->getHeaderLine('User-Agent'));
 
-        $this->assertEquals('{"channel":"channel-123","notification":"Hello world"}', $request->getBody()->getContents());
+        $this->assertEquals('{"channel_id":"channel-123","content":"Hello world"}', $request->getBody()->getContents());
     }
     
     
