@@ -42,3 +42,66 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ```
+
+### Managing Channels
+
+All channel methods return an array with the decoded JSON response from the API. On failure, a `RuntimeException` is thrown.
+
+#### List channels
+
+```php
+$channels = $client->listChannels();
+// $channels['data'] — array of channel objects
+```
+
+#### Create a channel
+
+```php
+$channel = $client->createChannel(
+    name: 'My Channel',
+    description: 'Optional description',  // optional
+    acknowledgmentEnabled: true            // optional, default false
+);
+// $channel['data'] — created channel object
+```
+
+#### Get a channel
+
+```php
+$channel = $client->getChannel('PUSHINATOR_CHANNEL_ID');
+// $channel['data'] — channel object
+```
+
+#### Update a channel
+
+```php
+$channel = $client->updateChannel(
+    channelId: 'PUSHINATOR_CHANNEL_ID',
+    name: 'Updated Name',
+    description: 'Updated description',   // optional
+    acknowledgmentEnabled: false          // optional
+);
+// $channel['data'] — updated channel object
+```
+
+#### Delete a channel
+
+```php
+$channel = $client->deleteChannel('PUSHINATOR_CHANNEL_ID');
+// $channel['data'] — deleted channel object
+```
+
+#### Channel object structure
+
+```json
+{
+  "data": {
+    "id": "channel-id",
+    "name": "My Channel",
+    "description": "Optional description",
+    "acknowledgment_enabled": false,
+    "created_at": "2024-01-01T00:00:00.000000Z",
+    "updated_at": "2024-01-01T00:00:00.000000Z"
+  }
+}
+```
