@@ -60,7 +60,6 @@ $channels = $client->listChannels();
 $channel = $client->createChannel(
     name: 'My Channel',
     description: 'Optional description',  // optional
-    acknowledgmentEnabled: true            // optional, default false
 );
 // $channel['data'] — created channel object
 ```
@@ -79,7 +78,6 @@ $channel = $client->updateChannel(
     channelId: 'PUSHINATOR_CHANNEL_ID',
     name: 'Updated Name',
     description: 'Updated description',   // optional
-    acknowledgmentEnabled: false          // optional
 );
 // $channel['data'] — updated channel object
 ```

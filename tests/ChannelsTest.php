@@ -94,7 +94,7 @@ class ChannelsTest extends TestCase
         $this->assertEquals('application/json', $request->getHeaderLine('Content-Type'));
         $this->assertEquals('pushinator-php/1.0', $request->getHeaderLine('User-Agent'));
         $this->assertEquals(
-            '{"name":"Test Channel","description":"A test channel","acknowledgment_enabled":true}',
+            '{"name":"Test Channel","description":"A test channel"}',
             $request->getBody()->getContents()
         );
         $this->assertEquals($responseData, $result);
@@ -183,7 +183,7 @@ class ChannelsTest extends TestCase
         $this->assertEquals('application/json', $request->getHeaderLine('Content-Type'));
         $this->assertEquals('pushinator-php/1.0', $request->getHeaderLine('User-Agent'));
         $this->assertEquals(
-            '{"name":"Updated Channel","description":"New description","acknowledgment_enabled":false}',
+            '{"name":"Updated Channel","description":"New description"}',
             $request->getBody()->getContents()
         );
         $this->assertEquals($responseData, $result);

@@ -91,10 +91,6 @@ class PushinatorClient
             $body['description'] = $description;
         }
 
-        if ($acknowledgmentEnabled !== null) {
-            $body['acknowledgment_enabled'] = $acknowledgmentEnabled;
-        }
-
         return $this->request('POST', '/api/v2/channels', $body);
     }
 
@@ -124,10 +120,6 @@ class PushinatorClient
 
         if ($description !== null) {
             $body['description'] = $description;
-        }
-
-        if ($acknowledgmentEnabled !== null) {
-            $body['acknowledgment_enabled'] = $acknowledgmentEnabled;
         }
 
         return $this->request('PUT', "/api/v2/channels/{$channelId}", $body);
