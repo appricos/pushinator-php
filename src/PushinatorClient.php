@@ -159,9 +159,10 @@ class PushinatorClient
 
             $response = $this->client->request($method, self::$baseUrl . $path, $options);
 
-            if ($response->getStatusCode() !== 200) {
+            $status = $response->getStatusCode();
+            if ($status < 200 || $status >= 300) {
                 throw new \RuntimeException(
-                    "Request failed. Status: {$response->getStatusCode()}, Body: {$response->getBody()}"
+                    "Request failed. Status: {$status}, Body: {$response->getBody()}"
                 );
             }
 
